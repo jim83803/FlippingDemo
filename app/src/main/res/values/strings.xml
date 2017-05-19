@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FlippingDemo</string>
+    <string name="demoText">這個Demo用三軸感測器實作手機的上下翻轉監測</string>
+</resources>
