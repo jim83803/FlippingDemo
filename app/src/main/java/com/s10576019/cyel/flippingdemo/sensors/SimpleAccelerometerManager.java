@@ -32,6 +32,8 @@ public abstract class SimpleAccelerometerManager implements SensorEventListener 
     public SimpleAccelerometerManager(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        setFilterMode();
+        setCutOffFrequency();
     }
 
     //操作方法

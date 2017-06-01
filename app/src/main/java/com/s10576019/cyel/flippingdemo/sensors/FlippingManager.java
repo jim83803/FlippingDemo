@@ -31,8 +31,6 @@ public class FlippingManager extends SimpleAccelerometerManager implements Simpl
     //公開方法
     public void start(OnScreenFlipListener onScreenFlipListener) {
         this.onScreenFlipListener = onScreenFlipListener;
-        setFilterMode();
-        setCutOffFrequency();
         super.start(this);
     }
 
