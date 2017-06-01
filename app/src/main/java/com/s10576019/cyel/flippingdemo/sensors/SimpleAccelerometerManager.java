@@ -39,9 +39,11 @@ public abstract class SimpleAccelerometerManager implements SensorEventListener 
         int sensorDelayMode = SensorManager.SENSOR_DELAY_GAME;
 
         final double deltaTime = 20.0 / 1000.0;
+        if (this.filterMode == 0) {
+            throw new RuntimeException(this.getClass().getName() + "setFilterMode()");
+        }
         if (this.cutOffFrequency == 0) {
-            throw new RuntimeException(this.getClass().getName()
-                    + "請實作setCutOffFrequency()");
+            throw new RuntimeException(this.getClass().getName() + "請實作setCutOffFrequency()");
         }
         final double cutOffFrequency = this.cutOffFrequency;
         final double timeConstant = 1.0 / (2 * Math.PI * cutOffFrequency);
