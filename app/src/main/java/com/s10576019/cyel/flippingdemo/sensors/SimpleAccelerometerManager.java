@@ -32,8 +32,13 @@ public abstract class SimpleAccelerometerManager implements SensorEventListener 
     public SimpleAccelerometerManager(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        setFilterMode();
-        setCutOffFrequency();
+    }
+
+    public SimpleAccelerometerManager(Context context, int filterMode, double cutOffFrequency) {
+        sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        setFilterMode(filterMode);
+        setCutOffFrequency(cutOffFrequency);
     }
 
     //操作方法
@@ -42,10 +47,10 @@ public abstract class SimpleAccelerometerManager implements SensorEventListener 
 
         final double deltaTime = 20.0 / 1000.0;
         if (this.filterMode == 0) {
-            throw new RuntimeException(this.getClass().getName() + "setFilterMode()");
+            throw new RuntimeException(this.getClass().getName() + "請呼叫setFilterMode(int filterMode)設定濾波模式");
         }
         if (this.cutOffFrequency == 0) {
-            throw new RuntimeException(this.getClass().getName() + "請實作setCutOffFrequency()");
+            throw new RuntimeException(this.getClass().getName() + "請setCutOffFrequency(double cutOffFrequency )設定截止頻率，需大於0");
         }
         final double cutOffFrequency = this.cutOffFrequency;
         final double timeConstant = 1.0 / (2 * Math.PI * cutOffFrequency);
@@ -61,8 +66,12 @@ public abstract class SimpleAccelerometerManager implements SensorEventListener 
     }
 
     //Setters
-    abstract public void setFilterMode();
-    abstract public void setCutOffFrequency();
+    public void setFilterMode(int filterMode) {
+        this.filterMode = filterMode;
+    }
+    public void setCutOffFrequency(double cutOffFrequency) {
+        this.cutOffFrequency = cutOffFrequency;
+    }
 
     //Getters
     public int getFilterMode() {

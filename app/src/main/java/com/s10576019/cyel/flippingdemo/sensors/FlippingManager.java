@@ -24,24 +24,14 @@ public class FlippingManager extends SimpleAccelerometerManager implements Simpl
     private OnScreenFlipListener onScreenFlipListener;
 
     //建構子
-    public FlippingManager(Context context) {
-        super(context);
+    public FlippingManager(Context context, int filterMode, double cutOffFrequency) {
+        super(context, filterMode, cutOffFrequency);
     }
 
     //公開方法
     public void start(OnScreenFlipListener onScreenFlipListener) {
         this.onScreenFlipListener = onScreenFlipListener;
         super.start(this);
-    }
-
-    //實作抽象方法
-    @Override
-    public void setFilterMode() {
-        super.filterMode = FILTER_MODE_LOW_PASS;
-    }
-    @Override
-    public void setCutOffFrequency() {
-        super.cutOffFrequency = 1;
     }
 
     //實作接口

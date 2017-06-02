@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        flippingManager = new FlippingManager(this);
+        flippingManager = new FlippingManager(this, FlippingManager.FILTER_MODE_LOW_PASS, 1.0);
         flippingManager.start(new FlippingManager.OnScreenFlipListener() {
             @Override
             public void onScreenFlipped(int facingDirection) {
