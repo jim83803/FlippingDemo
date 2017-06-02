@@ -6,7 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-public abstract class SimpleAccelerometerManager implements SensorEventListener {
+public class SimpleAccelerometerManager implements SensorEventListener {
     //接口
     public interface AccelerometerListener {
         void onNewValue(double x, double y, double z);
